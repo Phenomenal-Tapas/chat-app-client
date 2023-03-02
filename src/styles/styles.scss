@@ -1,0 +1,282 @@
+// fonts
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+// variables
+$primary-color: #b100cd;
+$secondary-color: #000000;
+$lighter-blue-color: #ca5cdd;
+$Poppins: "Poppins", sans-serif;
+
+// global styles
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $Poppins;
+  font-size: 20px;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: $secondary-color;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background-color 250ms ease;
+  text-transform: uppercase;
+}
+
+input {
+  border: 1px solid #333;
+  outline: none;
+}
+
+input::placeholder {
+  color: $secondary-color !important;
+  text-transform: uppercase;
+}
+
+ul {
+  list-style: none;
+}
+
+.chat-app-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scrollable {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 8px;
+  }
+}
+
+// connected-users styles
+.connected-users {
+  width: 300px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: $primary-color;
+  color: white;
+  padding: 30px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    font-weight: 300;
+    margin-bottom: 40px;
+    text-decoration: underline;
+  }
+
+  .connected-user {
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    background: $lighter-blue-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    span {
+      font-size: 1rem;
+    }
+  }
+}
+
+// messages styles
+.messages {
+  width: calc(100vw - 300px);
+
+  .message-list {
+    height: calc(100vh - 45px);
+    padding: 20px;
+    overflow-y: auto;
+
+    .message {
+      font-weight: 300;
+      width: fit-content;
+      max-width: 70%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      padding: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &.sended {
+        background: $primary-color;
+        color: white;
+        margin-left: auto;
+      }
+
+      &.received {
+        background: #333;
+        color: white;
+
+        time {
+          color: #666 !important;
+        }
+      }
+
+      .message-info {
+        margin-bottom: 3px;
+
+        span,
+        time {
+          font-size: 0.8rem;
+        }
+
+        span {
+          color: #ddd;
+          text-decoration: underline;
+        }
+
+        time {
+          color: #ddd;
+        }
+      }
+    }
+  }
+
+  form {
+    height: 45px;
+
+    input {
+      display: inline-block;
+      height: 100%;
+      width: 85%;
+      color: #333;
+      padding: 5px 10px;
+      font-size: 1.1rem;
+
+      &::placeholder {
+        font-size: 0.95rem;
+        color: #ccc;
+      }
+    }
+
+    button {
+      display: inline-block;
+      height: 100%;
+      width: 15%;
+      background: $primary-color;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 300;
+
+      &:hover {
+        background: $lighter-blue-color;
+      }
+    }
+  }
+}
+
+// enter-username-form styles
+.enter-username-form {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  input {
+    display: inline-block;
+    width: 300px;
+    height: 35px;
+    margin-bottom: 10px;
+    color: #333;
+    padding: 5px 10px;
+    font-size: 1rem;
+
+    &::placeholder {
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+  }
+
+  button {
+    background: $primary-color;
+    color: white;
+    font-weight: 300;
+    font-size: 1rem;
+    padding: 7px 35px;
+
+    &:hover {
+      background: $lighter-blue-color;
+    }
+  }
+}
+
+// media queries
+@media (max-width: 960px) {
+  .connected-users {
+    width: 250px;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .connected-user {
+      img {
+        width: 45px;
+        height: 45px;
+      }
+
+      span {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .messages {
+    width: calc(100vw - 250px);
+
+    .message p {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  .messages {
+    form {
+      input {
+        width: 75%;
+        font-size: 1.1rem;
+      }
+
+      button {
+        width: 25%;
+        font-size: 1rem;
+      }
+    }
+  }
+}
